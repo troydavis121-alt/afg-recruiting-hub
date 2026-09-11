@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex,nofollow" />
+<title>AFG Recruiting Campaign Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --bg:#0B1826; --bg-2:#0F2033; --surface:#13283F; --surface-2:#1A3350; --line:#27466A;
+  --text:#F2F5F8; --muted:#9FB3C8; --accent:#3FB68B; --accent-dim:#1E5C47;
+  --gold:#E2B34A; --danger:#E5646E; --good:#3FB68B;
+  --font-display:'Oswald',system-ui,sans-serif;
+  --font-body:'IBM Plex Sans',system-ui,sans-serif;
+  --font-mono:'IBM Plex Mono',ui-monospace,monospace;
+  --radius:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:radial-gradient(1200px 600px at 50% -10%,#1B3B5E 0%,transparent 60%),var(--bg);color:var(--text);font-family:var(--font-body);line-height:1.5;-webkit-font-smoothing:antialiased;padding-bottom:80px;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:1;background:repeating-linear-gradient(to bottom,rgba(255,255,255,.012) 0 1px,transparent 1px 3px);mix-blend-mode:overlay;opacity:.3}
+.shell{position:relative}
+.sidenav{position:fixed;top:0;left:0;height:100vh;width:212px;background:var(--surface);border-right:1px solid var(--line);padding:18px 12px;display:flex;flex-direction:column;gap:6px;z-index:40;overflow-y:auto;transition:width .22s ease,transform .22s ease}
+.shell.collapsed .sidenav{width:60px}
+.shell.collapsed .navlink-label,.shell.collapsed .brandmini-label{display:none}
+.shell.collapsed .navlink-row{justify-content:center}
+.shell.collapsed .infobtn{display:none}
+.sidenav-head{display:flex;align-items:center;justify-content:space-between;gap:6px;margin-bottom:8px;padding:0 2px}
+.brandmini{display:flex;align-items:center;gap:8px;overflow:hidden;min-width:0}
+.brandmini svg{width:26px;height:26px;flex:0 0 auto}
+.brandmini-label{font-family:var(--font-mono);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.collapseBtn{width:24px;height:24px;border-radius:50%;border:1px solid var(--line);background:var(--bg-2);color:var(--muted);cursor:pointer;flex:0 0 auto;display:flex;align-items:center;justify-content:center;font-size:.68rem;transition:.18s}
+.collapseBtn:hover{border-color:var(--accent-dim);color:var(--accent)}
+.navlink-row{position:relative;display:flex;align-items:center;gap:4px}
+.navlink{flex:1;display:flex;align-items:center;gap:10px;background:none;border:1px solid transparent;border-radius:10px;padding:10px;color:var(--text);font-family:var(--font-mono);font-size:.8rem;cursor:pointer;text-align:left;white-space:nowrap;overflow:hidden;min-width:0}
+.navlink:hover{background:var(--surface-2);border-color:var(--line)}
+.navlink-ic{flex:0 0 auto;width:16px;text-align:center;color:var(--accent)}
+.navlink-label{overflow:hidden;text-overflow:ellipsis}
+.sidenav .infopop{left:calc(100% + 10px);bottom:auto;top:0}
+.navToggle{display:none;position:fixed;bottom:18px;right:18px;z-index:41;width:46px;height:46px;border-radius:50%;border:1px solid var(--accent-dim);background:var(--accent);color:#04121a;font-size:1.1rem;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 8px 20px rgba(0,0,0,.4)}
+.navBackdrop{display:none;position:fixed;inset:0;background:rgba(4,7,14,.6);z-index:39}
+.navBackdrop.show{display:block}
+.content{margin-left:212px;transition:margin-left .22s ease}
+.shell.collapsed .content{margin-left:60px}
+@media (max-width:860px){
+  .sidenav{width:230px !important;transform:translateX(-100%);box-shadow:0 0 30px rgba(0,0,0,.5)}
+  .sidenav.mobile-open{transform:translateX(0)}
+  .collapseBtn{display:none}
+  .content,.shell.collapsed .content{margin-left:0}
+  .navToggle{display:flex}
+  .sidenav .infopop{left:0;right:auto;top:calc(100% + 6px);bottom:auto;width:calc(100% - 20px)}
+  .sidenav .navlink-label,.sidenav .brandmini-label{display:inline !important}
+  .sidenav .navlink-row{justify-content:flex-start !important}
+  .sidenav .infobtn{display:inline-flex !important}
+}
+.wrap{max-width:940px;margin:0 auto;padding:0 18px;position:relative;z-index:2}
+header{padding:26px 0 14px}
+.brandrow{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.markwrap{position:relative;width:46px;height:46px;flex:0 0 auto}
+.mark{position:relative;z-index:2;width:46px;height:46px;filter:drop-shadow(0 0 8px var(--accent-dim))}
+.vortex{position:absolute;z-index:1;inset:-15px;width:76px;height:76px;animation:spin 16s linear infinite;pointer-events:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+.titles h1{font-family:var(--font-display);font-weight:700;letter-spacing:.04em;text-transform:uppercase;font-size:clamp(1.4rem,5vw,2.1rem);line-height:1.1}
+.titles h1 .thin{font-weight:500;color:var(--accent)}
+.sub{font-family:var(--font-mono);font-size:.72rem;color:var(--muted);letter-spacing:.03em;margin-top:6px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.livepill{display:inline-flex;align-items:center;gap:6px;color:var(--accent);border:1px solid var(--accent-dim);border-radius:100px;padding:2px 9px;font-weight:600}
+.dot-live{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:flicker 1.8s infinite}
+@keyframes flicker{0%,19%,21%,23%,54%,56%,100%{opacity:1}20%,22%,55%{opacity:.3}}
+.syncpill{padding:2px 9px;border-radius:100px;border:1px solid var(--line);background:rgba(0,0,0,.2);transition:opacity .2s}
+.syncpill.saving{color:var(--gold)}
+.syncpill.saved{color:var(--good)}
+.syncpill.offline{color:var(--danger)}
+.popwrap{position:relative;display:inline-flex}
+.helpBtn{width:22px;height:22px;border-radius:50%;border:1px solid var(--accent-dim);background:var(--surface);color:var(--accent);font-family:var(--font-mono);font-size:.72rem;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;line-height:1;transition:.18s}
+.helpBtn:hover{background:var(--surface-2);border-color:var(--accent)}
+.infopop{position:absolute;left:0;bottom:calc(100% + 10px);width:250px;max-width:70vw;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-family:var(--font-body);font-size:.78rem;line-height:1.45;color:var(--text);box-shadow:0 12px 28px rgba(0,0,0,.45);opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .15s,transform .15s;z-index:30}
+.infopop b{color:var(--text);font-weight:600}
+.infopop.show{opacity:1;visibility:visible;transform:translateY(0)}
+.infopop.below{bottom:auto;top:calc(100% + 10px)}
+.infobtn{width:18px;height:18px;border-radius:50%;border:1px solid var(--accent-dim);background:var(--bg-2);color:var(--accent);font-family:var(--font-mono);font-style:italic;font-size:.62rem;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;line-height:1;flex:0 0 auto}
+.infobtn:hover{background:var(--surface-2);border-color:var(--accent)}
+.actions{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+.btn{font-family:var(--font-mono);font-size:.8rem;letter-spacing:.02em;padding:9px 16px;border-radius:100px;border:1px solid var(--accent-dim);background:var(--surface);color:var(--accent);cursor:pointer;transition:.18s}
+.btn:hover{background:var(--surface-2);border-color:var(--accent)}
+.btn.primary{background:var(--accent);color:#04121a;border-color:var(--accent);font-weight:600}
+.btn.ghost{color:var(--muted);border-color:var(--line)}
+.btn.small{padding:6px 12px;font-size:.72rem}
+.btn.danger{color:var(--danger);border-color:#5a2530}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+section{margin-top:34px;scroll-margin-top:20px}
+.eyebrow{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.eyebrow::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+.statline{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px}
+.stat{flex:1;min-width:130px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.stat .k{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.stat .v{font-family:var(--font-display);font-weight:700;font-size:1.6rem;margin-top:3px}
+.stat .v small{font-size:.9rem;color:var(--muted);font-weight:400}
+.stat .v.warn{color:var(--danger)}.stat .v.acc{color:var(--accent)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+.kv{display:grid;grid-template-columns:170px 1fr;gap:6px 12px;font-size:.86rem}
+.kv .k{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding-top:2px}
+.kv .v{color:var(--text)}
+@media(max-width:560px){.kv{grid-template-columns:1fr}.kv .k{margin-top:8px}}
+.gate{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.gateitem{display:flex;align-items:center;gap:8px;background:var(--bg-2);border:1px solid var(--line);border-radius:100px;padding:6px 12px;font-size:.8rem}
+.gateitem .ic{font-weight:700}
+.gateitem.on .ic{color:var(--good)}
+.gateitem.off .ic{color:var(--muted)}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;align-items:center}
+.chip{font-family:var(--font-mono);font-size:.76rem;padding:7px 13px;border-radius:100px;background:var(--surface);border:1px solid var(--line);color:var(--text);cursor:pointer;transition:.18s}
+.chip:hover{border-color:var(--accent-dim)}
+.chip.on{background:var(--accent);color:#04121a;border-color:var(--accent);font-weight:600}
+.catselect{background:var(--surface);border:1px solid var(--line);border-radius:100px;color:var(--text);font-family:var(--font-mono);font-size:.76rem;padding:7px 13px}
+.catgroup{margin-bottom:22px}
+.cathead{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+.catname{font-family:var(--font-display);font-weight:600;text-transform:uppercase;letter-spacing:.04em;font-size:.98rem}
+.catblurb{font-size:.78rem;color:var(--muted);flex:1;min-width:180px}
+.catcount{font-family:var(--font-mono);font-size:.72rem;color:var(--muted)}
+.bar{height:6px;width:100%;background:var(--bg-2);border-radius:100px;overflow:hidden;border:1px solid var(--line);margin-bottom:10px}
+.bar span{display:block;height:100%;background:linear-gradient(90deg,var(--accent-dim),var(--accent));border-radius:100px;transition:width .6s cubic-bezier(.2,.8,.2,1)}
+.rows{display:flex;flex-direction:column;gap:8px}
+.row{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);transition:border-color .2s,box-shadow .2s}
+.row.item{display:grid;grid-template-columns:44px 1fr;grid-template-areas:"chk top" "chk meta";column-gap:12px;row-gap:6px;align-items:start;padding:12px 14px}
+.row.item.pulse{animation:pulse-row .6s ease}
+@keyframes pulse-row{0%{box-shadow:0 0 0 0 var(--accent-dim)}50%{box-shadow:0 0 0 4px var(--accent-dim)}100%{box-shadow:0 0 0 0 transparent}}
+.check{grid-area:chk;align-self:start;width:44px;height:44px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.check input{width:20px;height:20px;accent-color:var(--accent);cursor:pointer}
+.itemtop{grid-area:top;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.iid{font-family:var(--font-mono);color:var(--muted);font-size:.72rem;flex:0 0 auto}
+.ititle{font-weight:600;font-size:.92rem}
+.row.item.done .ititle{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--line)}
+.badge{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.04em;padding:2px 7px;border-radius:100px;border:1px solid;flex:0 0 auto}
+.badge.p1{color:var(--gold);border-color:#5a4a12;background:#241d06}
+.badge.p2{color:var(--accent);border-color:var(--accent-dim);background:#0e2a20}
+.badge.p3{color:var(--muted);border-color:var(--line);background:var(--bg-2)}
+.itemmeta{grid-area:meta;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.metaLeft,.metaRight{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.feeds{font-size:.7rem;color:var(--muted)}
+.notebtn{position:relative;width:30px;height:30px;border-radius:50%;border:1px solid var(--line);background:var(--bg-2);color:var(--muted);cursor:pointer;font-size:.8rem;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.notebtn:hover{border-color:var(--accent-dim);color:var(--accent)}
+.notebtn .dot{position:absolute;top:1px;right:1px;width:7px;height:7px;border-radius:50%;background:var(--accent)}
+.ownerchip{font-family:var(--font-mono);font-size:.66rem;color:var(--muted);background:var(--bg-2);border:1px solid var(--line);border-radius:100px;padding:3px 9px;white-space:nowrap}
+.doneinfo{font-family:var(--font-mono);font-size:.66rem;color:var(--good);white-space:nowrap}
+.noteWrap{padding:0 14px 12px 58px}
+.noteInput{width:100%;background:var(--bg-2);border:1px solid var(--line);border-radius:10px;color:var(--text);font-family:var(--font-body);font-size:.84rem;padding:8px 10px;resize:vertical;min-height:52px}
+.noteInput:focus{outline:none;border-color:var(--accent)}
+.weekhead{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:18px 0 8px}
+.weekhead:first-child{margin-top:0}
+table.team{width:100%;border-collapse:collapse;font-size:.86rem}
+table.team th,table.team td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line)}
+table.team th{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.wsnote{font-size:.8rem;color:var(--muted);margin-top:12px}
+.wslist{margin-top:16px;display:flex;flex-direction:column;gap:6px}
+.wsrow{display:flex;justify-content:space-between;gap:10px;font-size:.82rem;padding:6px 0;border-bottom:1px solid var(--line)}
+.wsrow:last-child{border-bottom:none}
+.wsrow .o{color:var(--muted)}
+.agendalist{display:flex;flex-direction:column;gap:0;margin-bottom:16px}
+.agendarow{display:grid;grid-template-columns:110px 1fr;gap:12px;padding:9px 0;border-bottom:1px solid var(--line);font-size:.86rem}
+.agendarow:last-child{border-bottom:none}
+.agendarow .t{font-family:var(--font-mono);font-size:.72rem;color:var(--accent)}
+.outputs{margin-top:6px}
+.outputs li{margin-left:20px;margin-top:4px;font-size:.86rem}
+.linkgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.linkcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:14px;display:flex;flex-direction:column;gap:6px}
+.linkcard .lbl{font-weight:600;font-size:.9rem}
+.linkcard a{color:var(--accent);font-size:.8rem;word-break:break-word}
+.linkcard .empty{color:var(--muted);font-size:.8rem;font-style:italic}
+.loglist{display:flex;flex-direction:column;gap:2px}
+.logrow{display:flex;justify-content:space-between;gap:10px;font-family:var(--font-mono);font-size:.76rem;padding:7px 0;border-bottom:1px solid var(--line);color:var(--muted)}
+.logrow:last-child{border-bottom:none}
+.logrow .who{color:var(--text)}
+footer{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);font-family:var(--font-mono);font-size:.68rem;color:var(--muted);line-height:1.7}
+footer a{color:var(--muted);cursor:pointer;text-decoration:underline}
+.overlay{position:fixed;inset:0;background:rgba(4,7,14,.72);z-index:50;display:none;align-items:flex-start;justify-content:center;padding:24px 14px;overflow-y:auto;backdrop-filter:blur(3px)}
+.overlay.show{display:flex}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;max-width:640px;width:100%;padding:22px;margin:auto}
+.panel h2{font-family:var(--font-display);text-transform:uppercase;letter-spacing:.06em;font-size:1.2rem;margin-bottom:4px}
+.panel .desc{font-size:.82rem;color:var(--muted);margin-bottom:16px}
+.field{margin-bottom:14px}
+.field label{display:block;font-family:var(--font-mono);font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+select,input[type=text],input[type=password],input[type=number],input[type=date],textarea{width:100%;background:var(--bg-2);border:1px solid var(--line);border-radius:10px;color:var(--text);font-family:var(--font-body);font-size:.92rem;padding:9px 11px}
+textarea{resize:vertical}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent)}
+.msg{font-size:.82rem;padding:10px 12px;border-radius:10px;margin-top:12px}
+.msg.err{background:#230810;color:var(--danger);border:1px solid #4a1526}
+.msg.ok{background:#06251a;color:var(--good);border:1px solid #114634}
+.divider{height:1px;background:var(--line);margin:16px 0}
+.rowbtns{display:flex;gap:10px;justify-content:flex-end;margin-top:16px;flex-wrap:wrap}
+.adminblock{border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:12px}
+.adminblock h3{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.inline{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:end}
+.inline2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.miniList{display:flex;flex-direction:column;gap:8px;margin-top:10px}
+.miniRow{display:flex;align-items:center;justify-content:space-between;gap:8px;background:var(--bg-2);border:1px solid var(--line);border-radius:10px;padding:8px 10px;font-size:.82rem}
+.miniRow .info{min-width:0}
+.miniRow .info .t1{font-weight:600}
+.miniRow .info .t2{color:var(--muted);font-size:.74rem}
+.helptext{font-size:.76rem;color:var(--muted);margin-top:4px}
+@media (max-width:560px){
+  .row.item{padding:10px 12px}
+  .kv{font-size:.82rem}
+  .inline,.inline2{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="shell" id="shell">
+  <aside class="sidenav" id="sidenav">
+    <div class="sidenav-head">
+      <div class="brandmini">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="24" fill="none" stroke="var(--accent)" stroke-width="4"/><path d="M20 33 L28 41 L44 24" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="brandmini-label">Jump to</span>
+      </div>
+      <button class="collapseBtn" id="collapseBtn" aria-label="Collapse navigation">«</button>
+    </div>
+    <div class="navlink-row">
+      <button class="navlink" data-target="overviewSection"><span class="navlink-ic">◆</span><span class="navlink-label">Overview</span></button>
+      <button class="infobtn" data-pop="popOverview" aria-label="About Overview">i</button>
+      <div class="infopop" id="popOverview">Progress at a glance: source packet completion, milestones, and the campaign brief the group works from.</div>
+    </div>
+    <div class="navlink-row">
+      <button class="navlink" data-target="packetSection"><span class="navlink-ic">☑</span><span class="navlink-label">Source Packet</span></button>
+      <button class="infobtn" data-pop="popPacket" aria-label="About Source Packet">i</button>
+      <div class="infopop" id="popPacket">The 56 items the Marketing Director supplies. Check items off as AFG delivers them; everyone sees updates.</div>
+    </div>
+    <div class="navlink-row">
+      <button class="navlink" data-target="milestonesSection"><span class="navlink-ic">◷</span><span class="navlink-label">Milestones</span></button>
+      <button class="infobtn" data-pop="popMilestones" aria-label="About Milestones">i</button>
+      <div class="infopop" id="popMilestones">The 17 week-by-week project milestones, same check-off behavior as the source packet.</div>
+    </div>
+    <div class="navlink-row">
+      <button class="navlink" data-target="teamSection"><span class="navlink-ic">◎</span><span class="navlink-label">Team</span></button>
+      <button class="infobtn" data-pop="popTeam" aria-label="About Team">i</button>
+      <div class="infopop" id="popTeam">Group members and workstreams. The Marketing Director supplies information; the group does the analysis.</div>
+    </div>
+    <div class="navlink-row">
+      <button class="navlink" data-target="kickoffSection"><span class="navlink-ic">▶</span><span class="navlink-label">Kickoff Agenda</span></button>
+      <button class="infobtn" data-pop="popKickoff" aria-label="About Kickoff Agenda">i</button>
+      <div class="infopop" id="popKickoff">The 60-minute kickoff plan and the four outputs the meeting needs to produce.</div>
+    </div>
+    <div class="navlink-row">
+      <button class="navlink" data-target="linksSection"><span class="navlink-ic">⛓</span><span class="navlink-label">Links</span></button>
+      <button class="infobtn" data-pop="popLinks" aria-label="About Links">i</button>
+      <div class="infopop" id="popLinks">Shared folder, rubric, kickoff plan, schedule, and the AFG career page.</div>
+    </div>
+    <div class="navlink-row">
+      <button class="navlink" data-target="activitySection"><span class="navlink-ic">≡</span><span class="navlink-label">Activity</span></button>
+      <button class="infobtn" data-pop="popActivity" aria-label="About Activity">i</button>
+      <div class="infopop" id="popActivity">The last 30 changes, for context and for the team peer evaluation.</div>
+    </div>
+  </aside>
+  <button class="navToggle" id="navToggle" aria-label="Toggle navigation">☰</button>
+  <div class="navBackdrop" id="navBackdrop"></div>
+  <main class="content" id="content">
+  <div class="wrap">
+  <header>
+    <div class="brandrow">
+      <div class="markwrap">
+        <svg class="vortex" viewBox="0 0 100 100" aria-hidden="true">
+          <circle cx="50" cy="50" r="46" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="4 7" opacity=".5"/>
+          <circle cx="50" cy="50" r="35" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-dasharray="3 6" opacity=".45"/>
+          <circle cx="50" cy="50" r="24" fill="none" stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="2 5" opacity=".35"/>
+        </svg>
+        <svg class="mark" viewBox="0 0 64 64" aria-hidden="true">
+          <circle cx="32" cy="32" r="24" fill="none" stroke="var(--accent)" stroke-width="4"/>
+          <path d="M20 33 L28 41 L44 24" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="titles">
+        <h1>AFG Recruiting <span class="thin">Campaign Hub</span></h1>
+        <div class="sub">
+          <span class="livepill"><span class="dot-live"></span>LIVE</span>
+          <span>MAR 6880 · RECRUITING CAMPAIGN</span>
+          <span class="syncpill" id="syncpill" aria-live="polite">Loading…</span>
+          <span class="popwrap">
+            <button class="helpBtn" data-pop="popHelp" aria-label="How this site works">?</button>
+            <div class="infopop below" id="popHelp">Check items off as AFG delivers them. Changes save to a Google Sheet automatically and show up for everyone within seconds.</div>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="actions">
+      <button class="btn primary" id="btnWhoAmI">Who are you?</button>
+      <button class="btn ghost" id="btnAdmin">Admin</button>
+    </div>
+  </header>
+
+  <section id="overviewSection">
+    <div class="eyebrow">Overview</div>
+    <div class="statline">
+      <div class="stat"><div class="k">Source packet</div><div class="v" id="statPacket">0 / 0</div></div>
+      <div class="stat"><div class="k">Priority 1 open</div><div class="v warn" id="statP1">0</div></div>
+      <div class="stat"><div class="k">Milestones done</div><div class="v acc" id="statMilestones">0 / 0</div></div>
+      <div class="stat"><div class="k">Days to final due</div><div class="v" id="statDue">n/a</div></div>
+    </div>
+    <div class="card">
+      <div class="kv" id="briefKv"></div>
+      <div class="gate" id="gateRow"></div>
+    </div>
+  </section>
+
+  <section id="packetSection">
+    <div class="eyebrow">Source Packet</div>
+    <div class="chips" id="packetFilters"></div>
+    <div id="packetGroups"></div>
+  </section>
+
+  <section id="milestonesSection">
+    <div class="eyebrow">Milestones</div>
+    <div id="milestoneGroups"></div>
+  </section>
+
+  <section id="teamSection">
+    <div class="eyebrow">Team</div>
+    <div class="card">
+      <table class="team" id="teamTable"><thead><tr><th>Name</th><th>Role</th><th>Workstream</th></tr></thead><tbody></tbody></table>
+      <div class="wsnote">The Marketing Director supplies information; the group does the analysis.</div>
+      <div class="wslist" id="wsList"></div>
+    </div>
+  </section>
+
+  <section id="kickoffSection">
+    <div class="eyebrow">Kickoff Agenda</div>
+    <div class="card">
+      <div class="agendalist" id="agendaList"></div>
+      <div class="subhead" style="font-family:var(--font-mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)">Required outputs</div>
+      <ul class="outputs" id="outputsList"></ul>
+    </div>
+  </section>
+
+  <section id="linksSection">
+    <div class="eyebrow">Links</div>
+    <div class="linkgrid" id="linkGrid"></div>
+  </section>
+
+  <section id="activitySection">
+    <div class="eyebrow">Activity</div>
+    <div class="card">
+      <div class="loglist" id="logList"></div>
+      <div class="wsnote">This log supports the team peer evaluation.</div>
+    </div>
+  </section>
+
+  <footer id="footer"></footer>
+  </div>
+  </main>
+</div>
+
+<!-- IDENTITY PANEL -->
+<div class="overlay" id="idOverlay">
+  <div class="panel">
+    <h2>Who are you?</h2>
+    <div class="desc">Pick your name (or add yours), then enter the team code. This is remembered on this device.</div>
+    <div class="field"><label>Name</label><select id="idName"></select></div>
+    <div class="field" id="idOtherWrap" hidden><label>Your name</label><input type="text" id="idOther" placeholder="Type your name" maxlength="100"/></div>
+    <div class="field"><label>Team code</label><input type="password" id="idCode" placeholder="Ask the group for this"/></div>
+    <div id="idMsg"></div>
+    <div class="rowbtns"><button class="btn ghost" data-close>Cancel</button><button class="btn primary" id="idSave">Continue</button></div>
+  </div>
+</div>
+
+<!-- NOTE is inline in each row; ADMIN PANEL below -->
+<div class="overlay" id="adminOverlay">
+  <div class="panel">
+    <h2>Admin</h2>
+    <div class="desc">The passphrase is checked on the server; it is remembered on this device only.</div>
+    <div class="field"><label>Admin passphrase</label><input type="password" id="aPass" placeholder="required for every action"/></div>
+    <div class="divider"></div>
+
+    <div class="adminblock">
+      <h3>1. Add item</h3>
+      <div class="inline2">
+        <div class="field"><label>List</label><select id="aiList"><option value="packet">Source packet</option><option value="milestone">Milestone</option></select></div>
+        <div class="field" id="aiCatWrap"><label>Category</label><select id="aiCat"></select></div>
+      </div>
+      <div class="field"><label>Title</label><input type="text" id="aiTitle" maxlength="200"/></div>
+      <div class="inline2">
+        <div class="field" id="aiPWrap"><label>Priority</label><select id="aiP"><option value="1">P1</option><option value="2">P2</option><option value="3" selected>P3</option></select></div>
+        <div class="field"><label>Owner</label><input type="text" id="aiOwner" maxlength="100"/></div>
+      </div>
+      <div class="inline2">
+        <div class="field" id="aiFeedsWrap"><label>Feeds</label><input type="text" id="aiFeeds" maxlength="200" placeholder="Parts 1, 3"/></div>
+        <div class="field" id="aiDueWrap"><label>Due / week</label><input type="text" id="aiDue" maxlength="50"/></div>
+      </div>
+      <div class="field"><label>Detail (optional)</label><textarea id="aiDetail" maxlength="1000" rows="2"></textarea></div>
+      <div class="rowbtns"><button class="btn" id="aiSave">Add item</button></div>
+    </div>
+
+    <div class="adminblock">
+      <h3>2. Edit or delete item</h3>
+      <div class="field"><label>Item</label><select id="aeSelect"></select></div>
+      <div id="aeFields" hidden>
+        <div class="field"><label>Title</label><input type="text" id="aeTitle" maxlength="200"/></div>
+        <div class="inline2">
+          <div class="field" id="aePWrap"><label>Priority</label><select id="aeP"><option value="1">P1</option><option value="2">P2</option><option value="3">P3</option></select></div>
+          <div class="field"><label>Owner</label><input type="text" id="aeOwner" maxlength="100"/></div>
+        </div>
+        <div class="inline2">
+          <div class="field" id="aeFeedsWrap"><label>Feeds</label><input type="text" id="aeFeeds" maxlength="200"/></div>
+          <div class="field" id="aeDueWrap"><label>Due / week</label><input type="text" id="aeDue" maxlength="50"/></div>
+        </div>
+        <div class="field"><label>Detail</label><textarea id="aeDetail" maxlength="1000" rows="2"></textarea></div>
+        <div class="rowbtns"><button class="btn danger" id="aeDelete">Delete (archive)</button><button class="btn" id="aeSave">Save changes</button></div>
+      </div>
+    </div>
+
+    <div class="adminblock">
+      <h3>3. Archived items</h3>
+      <div class="miniList" id="archList"></div>
+    </div>
+
+    <div class="adminblock">
+      <h3>4. Members</h3>
+      <div class="inline2">
+        <div class="field"><label>Name</label><input type="text" id="amName" maxlength="100"/></div>
+        <div class="field"><label>Role</label><input type="text" id="amRole" maxlength="100"/></div>
+      </div>
+      <div class="field"><label>Workstream</label><input type="text" id="amWorkstream" maxlength="150"/></div>
+      <div class="rowbtns"><button class="btn" id="amSave">Save member</button></div>
+      <div class="miniList" id="memberList"></div>
+    </div>
+
+    <div class="adminblock">
+      <h3>5. Links</h3>
+      <div class="inline2">
+        <div class="field"><label>Label</label><input type="text" id="alLabel" maxlength="200"/></div>
+        <div class="field"><label>URL</label><input type="text" id="alUrl" maxlength="500" placeholder="https://"/></div>
+      </div>
+      <div class="rowbtns"><button class="btn" id="alSave">Add link</button></div>
+      <div class="miniList" id="linkList"></div>
+    </div>
+
+    <div class="adminblock">
+      <h3>6. Campaign brief and gate toggles</h3>
+      <div id="briefFields"></div>
+      <div class="field" style="margin-top:10px"><label>Gate: audience, objective, platforms, CTA</label>
+        <div class="chips" id="gateToggles"></div>
+      </div>
+      <div class="rowbtns"><button class="btn" id="briefSave">Save brief</button></div>
+    </div>
+
+    <div class="adminblock">
+      <h3>7. Final due date</h3>
+      <div class="inline">
+        <div class="field"><label>Date</label><input type="date" id="aDueDate"/></div>
+        <button class="btn" id="aDueSave">Save</button>
+      </div>
+    </div>
+
+    <div class="adminblock">
+      <h3>8. Danger zone: reset checks</h3>
+      <div class="inline2">
+        <div class="field"><label>List</label><select id="arList"><option value="packet">Source packet</option><option value="milestone">Milestones</option></select></div>
+        <div class="field"><label>Type RESET to confirm</label><input type="text" id="arConfirm" placeholder="RESET"/></div>
+      </div>
+      <div class="rowbtns"><button class="btn danger" id="arSave">Reset checks</button></div>
+    </div>
+
+    <div id="aMsg"></div>
+    <div class="rowbtns"><button class="btn ghost" data-close>Close</button></div>
+  </div>
+</div>
+
+<script>
+/* ===================================================================
+   CONFIG: paste your Apps Script Web App /exec URL here to go live.
+   Leave empty to run on the built-in demo data (localStorage only).
+   =================================================================== */
+const API_URL = "https://script.google.com/macros/s/AKfycbzZWoORSukATTtZyNb6CTT9JXavON98R77kD2PyMPwmV3EicR0SIvJe49uE5y7eBhynFw/exec";
+const LIVE = !!API_URL;
+
+/* SEED:START */
+const DEMO = {
+  "version": 1,
+  "categories": [
+    { "id": "REC", "name": "Recruiting objective", "blurb": "The one opportunity we are recruiting for and what a qualified candidate looks like." },
+    { "id": "EVP", "name": "Recruiting value proposition", "blurb": "Specific, supportable reasons a candidate would choose AFG." },
+    { "id": "AUD", "name": "Audience insight and interviews", "blurb": "What AFG knows about successful hires, plus interview access." },
+    { "id": "SOC", "name": "Social media baseline", "blurb": "Date-stamped performance data for every active AFG account." },
+    { "id": "AST", "name": "Recruiting materials and assets", "blurb": "Existing content the group can use, and what to avoid." },
+    { "id": "CMP", "name": "Brand voice and compliance", "blurb": "Tone, terminology, disclosures, and what compliance will not allow." },
+    { "id": "RES", "name": "Resources and constraints", "blurb": "Budget, people, tools, and approval time for a realistic plan." },
+    { "id": "FUN", "name": "Recruiting funnel baseline", "blurb": "Numbers from career page visit through interview." },
+    { "id": "COM", "name": "Competitors", "blurb": "Firms competing with AFG for the same candidates." },
+    { "id": "ADM", "name": "Approvals", "blurb": "Sign-offs needed before anything is shared or submitted." }
+  ],
+  "items": [
+    { "id": "REC-01", "cat": "REC", "p": 1, "title": "The one role or opportunity AFG wants to recruit for", "feeds": "Parts 1, 3" },
+    { "id": "REC-02", "cat": "REC", "p": 1, "title": "Hiring targets and how many candidates AFG could realistically consider in the campaign month", "feeds": "Parts 3, 9" },
+    { "id": "REC-03", "cat": "REC", "p": 1, "title": "Geographic recruiting area and in-person, hybrid, or remote arrangement", "feeds": "Parts 1, 6" },
+    { "id": "REC-04", "cat": "REC", "p": 1, "title": "Definition of a qualified candidate (experience, licensing, education, traits)", "feeds": "Parts 1, 3, 9" },
+    { "id": "REC-05", "cat": "REC", "p": 1, "title": "Application and interview process, who responds to leads, and expected response time", "feeds": "Parts 3, 4, 7" },
+    { "id": "REC-06", "cat": "REC", "p": 2, "title": "Common reasons applicants do not advance", "feeds": "Parts 1, 5" },
+    { "id": "EVP-01", "cat": "EVP", "p": 1, "title": "Career value proposition deck (English and Spanish versions)", "feeds": "Parts 1, 3, 5, 7" },
+    { "id": "EVP-02", "cat": "EVP", "p": 1, "title": "Summary of training, mentorship, and professional development", "feeds": "Parts 3, 7" },
+    { "id": "EVP-03", "cat": "EVP", "p": 1, "title": "Leadership answer: why build a career at AFG instead of another firm?", "feeds": "Parts 3, 5" },
+    { "id": "EVP-04", "cat": "EVP", "p": 2, "title": "Support resources for financial professionals (technology, marketing, administrative)", "feeds": "Part 7" },
+    { "id": "EVP-05", "cat": "EVP", "p": 2, "title": "Proof points separated from aspirational messaging", "feeds": "Parts 5, 7" },
+    { "id": "EVP-06", "cat": "EVP", "p": 2, "title": "Approved career stories from current team members", "feeds": "Part 7" },
+    { "id": "AUD-01", "cat": "AUD", "p": 1, "title": "Anonymized profile of recent successful hires (prior careers, career stage, motivations)", "feeds": "Part 1" },
+    { "id": "AUD-02", "cat": "AUD", "p": 1, "title": "Top questions and objections recruiters hear from candidates", "feeds": "Parts 1, 5, 7" },
+    { "id": "AUD-03", "cat": "AUD", "p": 1, "title": "Interview scheduled: AFG leadership", "feeds": "Parts 1, 3" },
+    { "id": "AUD-04", "cat": "AUD", "p": 1, "title": "Interview scheduled: recruiter or recruiting coordinator", "feeds": "Parts 1, 9" },
+    { "id": "AUD-05", "cat": "AUD", "p": 1, "title": "Interviews scheduled: two recently hired financial professionals", "feeds": "Parts 1, 5" },
+    { "id": "AUD-06", "cat": "AUD", "p": 2, "title": "Interview scheduled: one established financial professional", "feeds": "Parts 1, 7" },
+    { "id": "AUD-07", "cat": "AUD", "p": 3, "title": "Interview (if possible): a candidate who considered AFG but did not move forward", "feeds": "Parts 1, 5" },
+    { "id": "SOC-01", "cat": "SOC", "p": 1, "title": "Account inventory: every handle and link, with follower counts as of a stated date", "feeds": "Parts 2, 3" },
+    { "id": "SOC-02", "cat": "SOC", "p": 1, "title": "Sprout Social export for the last 6 to 12 months (impressions, engagements, engagement rate, clicks)", "feeds": "Parts 2, 3, 9" },
+    { "id": "SOC-03", "cat": "SOC", "p": 1, "title": "Top 10 and bottom 10 posts with metrics", "feeds": "Part 2" },
+    { "id": "SOC-04", "cat": "SOC", "p": 1, "title": "Past recruiting posts tagged separately, with results", "feeds": "Part 2" },
+    { "id": "SOC-05", "cat": "SOC", "p": 2, "title": "Content workflow: who creates, who approves, posting frequency, current calendar", "feeds": "Parts 2, 4, 8" },
+    { "id": "SOC-06", "cat": "SOC", "p": 2, "title": "Business Casual podcast and YouTube stats, plus episodes featuring career stories", "feeds": "Parts 2, 7" },
+    { "id": "SOC-07", "cat": "SOC", "p": 3, "title": "Process for responding to messages and comments", "feeds": "Parts 4, 9" },
+    { "id": "SOC-08", "cat": "SOC", "p": 3, "title": "Past paid social results, if any", "feeds": "Parts 2, 4" },
+    { "id": "AST-01", "cat": "AST", "p": 1, "title": "Career webpage link and interest form (afgfl.com/career)", "feeds": "Parts 7, 9" },
+    { "id": "AST-02", "cat": "AST", "p": 1, "title": "Brand kit: logos, colors, fonts, Canva brand kit access", "feeds": "Parts 5, 7" },
+    { "id": "AST-03", "cat": "AST", "p": 2, "title": "Job descriptions for the target role", "feeds": "Parts 1, 7" },
+    { "id": "AST-04", "cat": "AST", "p": 2, "title": "Recruiting brochures, presentations, email copy, and FAQs", "feeds": "Part 7" },
+    { "id": "AST-05", "cat": "AST", "p": 2, "title": "Approved testimonials", "feeds": "Part 7" },
+    { "id": "AST-06", "cat": "AST", "p": 2, "title": "Office, team, and event photography and video", "feeds": "Part 7" },
+    { "id": "AST-07", "cat": "AST", "p": 3, "title": "List of outdated materials the group should not use", "feeds": "Part 7" },
+    { "id": "CMP-01", "cat": "CMP", "p": 1, "title": "Desired tone and preferred terminology (for example, \"financial professional\")", "feeds": "Part 5" },
+    { "id": "CMP-02", "cat": "CMP", "p": 1, "title": "Words, phrases, and claims compliance does not permit", "feeds": "Parts 5, 7" },
+    { "id": "CMP-03", "cat": "CMP", "p": 1, "title": "Required disclosures and rules for referencing affiliated firms", "feeds": "Parts 7, 8" },
+    { "id": "CMP-04", "cat": "CMP", "p": 1, "title": "Guidance on testimonials and on compensation or income messaging", "feeds": "Part 7" },
+    { "id": "CMP-05", "cat": "CMP", "p": 1, "title": "Who approves content and expected compliance review time", "feeds": "Parts 4, 8" },
+    { "id": "RES-01", "cat": "RES", "p": 1, "title": "Campaign budget and paid social budget (a range is fine)", "feeds": "Part 4" },
+    { "id": "RES-02", "cat": "RES", "p": 1, "title": "Staff who could participate and weekly hours available", "feeds": "Part 4" },
+    { "id": "RES-03", "cat": "RES", "p": 1, "title": "Ability to edit the career page and create UTM tracking links", "feeds": "Parts 7, 9" },
+    { "id": "RES-04", "cat": "RES", "p": 2, "title": "Production capacity and equipment (studio, cameras, editing, Canva, Adobe)", "feeds": "Parts 4, 7" },
+    { "id": "RES-05", "cat": "RES", "p": 2, "title": "Sprout Social availability for scheduling and reporting", "feeds": "Parts 4, 8, 9" },
+    { "id": "RES-06", "cat": "RES", "p": 2, "title": "Leadership approval turnaround time", "feeds": "Parts 4, 8" },
+    { "id": "FUN-01", "cat": "FUN", "p": 1, "title": "Career page visits and form submissions per month", "feeds": "Parts 3, 9" },
+    { "id": "FUN-02", "cat": "FUN", "p": 1, "title": "Inquiries, qualified candidates, initial interviews, and candidates advancing", "feeds": "Parts 3, 9" },
+    { "id": "FUN-03", "cat": "FUN", "p": 2, "title": "Candidate source breakdown (referral, LinkedIn, job boards, events)", "feeds": "Parts 2, 6" },
+    { "id": "FUN-04", "cat": "FUN", "p": 2, "title": "Average response time and inquiry-to-interview conversion", "feeds": "Part 9" },
+    { "id": "FUN-05", "cat": "FUN", "p": 2, "title": "Note of which funnel numbers do not exist yet", "feeds": "Part 9" },
+    { "id": "FUN-06", "cat": "FUN", "p": 3, "title": "Historical cost per applicant or lead, if paid advertising was used", "feeds": "Parts 4, 9" },
+    { "id": "COM-01", "cat": "COM", "p": 1, "title": "Three to five firms competing with AFG for the same candidates", "feeds": "Part 2" },
+    { "id": "COM-02", "cat": "COM", "p": 3, "title": "AFG's view of each competitor's recruiting pitch", "feeds": "Part 2" },
+    { "id": "ADM-01", "cat": "ADM", "p": 1, "title": "Leadership sign-off on what AFG information can appear in a graded paper", "feeds": "All" },
+    { "id": "ADM-02", "cat": "ADM", "p": 1, "title": "Dr. Eastman approves AFG as the client", "feeds": "All" },
+    { "id": "ADM-03", "cat": "ADM", "p": 2, "title": "Permission to use employee names, photos, and quotes", "feeds": "Part 7" }
+  ],
+  "milestones": [
+    { "id": "M-01", "week": "1", "title": "Kickoff meeting held: audience chosen, brief drafted, roles assigned, packet deadline set", "owner": "Whole group" },
+    { "id": "M-02", "week": "1", "title": "Group information submitted (name, members, meeting time)", "owner": "Editor and operations lead" },
+    { "id": "M-03", "week": "1", "title": "Requirements checklist built from the rubric", "owner": "Editor and operations lead" },
+    { "id": "M-04", "week": "1", "title": "One-page campaign brief finalized", "owner": "Strategy lead" },
+    { "id": "M-05", "week": "2", "title": "All Priority 1 source packet items delivered", "owner": "Marketing Director" },
+    { "id": "M-06", "week": "2", "title": "Stakeholder interviews completed and notes shared", "owner": "Research lead" },
+    { "id": "M-07", "week": "3", "title": "Part 1 persona drafted and approved", "owner": "Research lead" },
+    { "id": "M-08", "week": "4", "title": "Part 2 AFG audit and competitor audit drafted", "owner": "Audit lead" },
+    { "id": "M-09", "week": "5", "title": "Part 3 goals, SMART objectives, strategy, and tactics drafted", "owner": "Strategy lead" },
+    { "id": "M-10", "week": "5", "title": "Section 4 resource plan validated against AFG capacity", "owner": "Marketing Director + one member" },
+    { "id": "M-11", "week": "6", "title": "Sections 5 and 6 drafted; big idea and platforms locked", "owner": "Creative lead" },
+    { "id": "M-12", "week": "8", "title": "Section 7 posts designed, captioned, and named", "owner": "Whole group" },
+    { "id": "M-13", "week": "8", "title": "Section 8 calendar built; optional draft submitted", "owner": "Editor and operations lead" },
+    { "id": "M-14", "week": "10", "title": "Section 9 measurement plan drafted", "owner": "Strategy lead" },
+    { "id": "M-15", "week": "10", "title": "Introduction, conclusion, and APA references complete", "owner": "Editor and operations lead" },
+    { "id": "M-16", "week": "11", "title": "Final rubric check, client fact-check, and proofread", "owner": "Whole group" },
+    { "id": "M-17", "week": "11", "title": "Final paper and team peer evaluation submitted", "owner": "Whole group" }
+  ],
+  "meta": {
+    "projectTitle": "AFG Recruiting Campaign Hub",
+    "groupName": "",
+    "finalDueDate": "2026-11-24",
+    "brief_client": "Alliance Financial Group",
+    "brief_purpose": "Recruiting",
+    "brief_audience": "One clearly defined candidate segment (to be chosen at kickoff)",
+    "brief_geography": "Southwest Florida, unless AFG recruits more broadly",
+    "brief_duration": "One month, beginning after submission",
+    "brief_conversion": "Recruiting inquiry, career form submission, or scheduled introductory conversation",
+    "brief_destination": "afgfl.com/career",
+    "brief_platforms": "LinkedIn primary; Instagram and Facebook if research justifies",
+    "brief_message": "AFG offers the support, development, culture, and opportunity the chosen candidate values",
+    "gate_audience": false,
+    "gate_objective": false,
+    "gate_platforms": false,
+    "gate_cta": false,
+    "seedVersion": 1
+  },
+  "members": [
+    { "name": "Marketing Director", "role": "Client liaison", "workstream": "AFG source packet", "active": true }
+  ],
+  "links": [
+    { "id": "career", "label": "AFG career page", "url": "https://www.afgfl.com/career", "sort": 1 },
+    { "id": "folder", "label": "Shared folder", "url": "", "sort": 2 },
+    { "id": "rubric", "label": "Rubric", "url": "", "sort": 3 },
+    { "id": "kickoffplan", "label": "Kickoff plan (Word)", "url": "", "sort": 4 },
+    { "id": "schedule", "label": "Schedule of Topics", "url": "", "sort": 5 }
+  ],
+  "teamWorkstreams": [
+    { "workstream": "AFG source packet", "owner": "Marketing Director" },
+    { "workstream": "Persona and audience research", "owner": "Research lead" },
+    { "workstream": "AFG and competitor audit", "owner": "Audit lead" },
+    { "workstream": "Strategy, objectives, measurement", "owner": "Strategy lead" },
+    { "workstream": "Content development", "owner": "Creative lead with whole group" },
+    { "workstream": "Resources and implementation", "owner": "Marketing Director + one member" },
+    { "workstream": "Calendar, APA, final edit", "owner": "Editor and operations lead" },
+    { "workstream": "Quality review", "owner": "Whole group" }
+  ],
+  "kickoffAgenda": {
+    "blocks": [
+      { "time": "0 to 10 min", "desc": "Review the rubric and requirements" },
+      { "time": "10 to 20 min", "desc": "Confirm the client, purpose, and boundaries" },
+      { "time": "20 to 35 min", "desc": "Choose one audience" },
+      { "time": "35 to 45 min", "desc": "Walk the source packet and flag gaps" },
+      { "time": "45 to 55 min", "desc": "Assign owners and deadlines" },
+      { "time": "55 to 60 min", "desc": "Confirm the next meeting" }
+    ],
+    "outputs": [
+      "The approved target market",
+      "A one-page campaign brief",
+      "Assigned responsibilities",
+      "A source packet deadline"
+    ]
+  }
+};
+/* SEED:END */
+
+const ADMIN_ACTIONS = ['addItem','updateItem','deleteItem','restoreItem','upsertMember','removeMember','upsertLink','removeLink','setMeta','resetChecks'];
+const META_WHITELIST = ['projectTitle','groupName','finalDueDate','brief_client','brief_purpose','brief_audience','brief_geography','brief_duration','brief_conversion','brief_destination','brief_platforms','brief_message','gate_audience','gate_objective','gate_platforms','gate_cta'];
+const BRIEF_FIELDS = [
+  {key:'brief_client', label:'Client'}, {key:'brief_purpose', label:'Purpose'},
+  {key:'brief_audience', label:'Audience'}, {key:'brief_geography', label:'Geography'},
+  {key:'brief_duration', label:'Duration'}, {key:'brief_conversion', label:'Primary conversion'},
+  {key:'brief_destination', label:'Primary destination'}, {key:'brief_platforms', label:'Platforms'},
+  {key:'brief_message', label:'Core message'}
+];
+const GATE_FIELDS = [
+  {key:'gate_audience', label:'Audience'}, {key:'gate_objective', label:'Objective'},
+  {key:'gate_platforms', label:'Platform strategy'}, {key:'gate_cta', label:'CTA'}
+];
+
+let STATE = { meta:{}, categories:[], members:[], links:[], items:[], log:[] };
+let pending = loadPending();
+let identity = { name: localStorage.getItem('afg_name')||'', code: localStorage.getItem('afg_code')||'' };
+let packetFilter = loadJSON('afg_packet_filter', { status:'all', category:'all' });
+let pendingReplay = null;
+let inFlight = false, flushTimer = null, retryTimer = null, retryIdx = 0;
+const RETRY_DELAYS = [2000,5000,15000];
+let openNoteId = null;
+
+function loadJSON(key, fallback){ try{ const v=localStorage.getItem(key); return v?JSON.parse(v):fallback; }catch(e){ return fallback; } }
+function loadPending(){ return loadJSON('afg_pending', {}); }
+function persistPending(){ localStorage.setItem('afg_pending', JSON.stringify(pending)); }
+function saveIdentity(){ localStorage.setItem('afg_name', identity.name); localStorage.setItem('afg_code', identity.code); }
+
+/* ---------------- formatting helpers ---------------- */
+function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function fmtDateTime(iso){
+  if(!iso) return '';
+  const d = new Date(iso);
+  if(isNaN(d)) return '';
+  const datePart = d.toLocaleDateString(undefined,{month:'short',day:'numeric'});
+  const timePart = d.toLocaleTimeString(undefined,{hour:'numeric',minute:'2-digit'});
+  return datePart+', '+timePart;
+}
+function timeAgo(iso){
+  if(!iso) return '';
+  const s = Math.max(0, (Date.now()-new Date(iso).getTime())/1000);
+  if(s<60) return Math.floor(s)+'s ago';
+  if(s<3600) return Math.floor(s/60)+'m ago';
+  if(s<86400) return Math.floor(s/3600)+'h ago';
+  return Math.floor(s/86400)+'d ago';
+}
+
+/* ---------------- demo store ---------------- */
+function demoInitDb(){
+  const items = [];
+  DEMO.items.forEach((it,i)=>items.push({
+    id: it.id, list:'packet', category: it.cat, sort: i+1, title: it.title, detail:'',
+    priority: it.p, feeds: it.feeds, owner:'Marketing Director', due:'', done:false,
+    doneBy:'', doneAt:'', note:'', updatedAt:new Date().toISOString(), updatedBy:'Setup', archived:false
+  }));
+  DEMO.milestones.forEach((m,i)=>items.push({
+    id: m.id, list:'milestone', category:'', sort:i+1, title:m.title, detail:'',
+    priority:null, feeds:'', owner:m.owner, due:m.week, done:false,
+    doneBy:'', doneAt:'', note:'', updatedAt:new Date().toISOString(), updatedBy:'Setup', archived:false
+  }));
+  return {
+    meta: Object.assign({}, DEMO.meta),
+    categories: DEMO.categories.map((c,i)=>Object.assign({sort:i+1},c)),
+    members: DEMO.members.map(m=>Object.assign({},m)),
+    links: DEMO.links.map(l=>Object.assign({},l)),
+    items, log: []
+  };
+}
+function demoLoadDb(){
+  const raw = localStorage.getItem('afg_demo_db');
+  if(raw){ try{ return JSON.parse(raw); }catch(e){} }
+  const db = demoInitDb();
+  demoSaveDb(db);
+  return db;
+}
+function demoSaveDb(db){ localStorage.setItem('afg_demo_db', JSON.stringify(db)); }
+function demoLog(db, actor, action, itemId, detail){
+  db.log.push({ ts:new Date().toISOString(), actor:actor||'', action, itemId:itemId||'', detail:detail||'' });
+  if(db.log.length>200) db.log = db.log.slice(-200);
+}
+function demoFindItem(db,id){ return db.items.find(i=>i.id===id); }
+
+function demoApplySetDone(db,id,done,by){
+  const it = demoFindItem(db,id); if(!it) return {ok:false,error:'Item not found: '+id};
+  const now = new Date().toISOString();
+  it.done = !!done; it.updatedAt = now; it.updatedBy = by||'';
+  if(done){ it.doneBy = by||''; it.doneAt = now; } else { it.doneBy=''; it.doneAt=''; }
+  demoLog(db, by, done?'checked':'unchecked', id, it.title);
+  return {ok:true, data:Object.assign({},it)};
+}
+function demoApplySetNote(db,id,note,by){
+  const it = demoFindItem(db,id); if(!it) return {ok:false,error:'Item not found: '+id};
+  it.note = String(note||'').slice(0,1000); it.updatedAt = new Date().toISOString(); it.updatedBy = by||'';
+  demoLog(db, by, 'noted', id, it.title);
+  return {ok:true, data:Object.assign({},it)};
+}
+function demoAddItem(db, item, by){
+  const list = item.list==='milestone'?'milestone':'packet';
+  const title = String(item.title||'').slice(0,200);
+  if(!title) return {ok:false,error:'Title required'};
+  let id, category='';
+  if(list==='milestone'){
+    let max=0; db.items.filter(i=>i.list==='milestone').forEach(i=>{const n=parseInt(String(i.id).slice(2),10); if(!isNaN(n)&&n>max)max=n;});
+    id = 'M-'+String(max+1).padStart(2,'0');
+  } else {
+    category = String(item.category||'').toUpperCase();
+    if(!category || !db.categories.some(c=>c.id===category)) return {ok:false,error:'Valid category required'};
+    let max=0; db.items.filter(i=>i.list==='packet'&&i.category===category).forEach(i=>{const n=parseInt(String(i.id).split('-')[1],10); if(!isNaN(n)&&n>max)max=n;});
+    id = category+'-'+String(max+1).padStart(2,'0');
+  }
+  const now = new Date().toISOString();
+  const row = { id, list, category, sort:999, title, detail:String(item.detail||'').slice(0,1000),
+    priority: list==='packet'?(Number(item.priority)||3):null, feeds:String(item.feeds||'').slice(0,200),
+    owner:String(item.owner||'').slice(0,100), due:String(item.due||'').slice(0,50),
+    done:false, doneBy:'', doneAt:'', note:'', updatedAt:now, updatedBy:by||'Admin', archived:false };
+  db.items.push(row);
+  demoLog(db, by, 'added', id, title);
+  return {ok:true, data:row};
+}
+function demoUpdateItem(db, id, fields, by){
+  const it = demoFindItem(db,id); if(!it) return {ok:false,error:'Item not found: '+id};
+  Object.keys(fields).forEach(k=>{ it[k]=fields[k]; });
+  it.updatedAt = new Date().toISOString(); it.updatedBy = by||'Admin';
+  demoLog(db, by, 'edited', id, it.title);
+  return {ok:true, data:Object.assign({},it)};
+}
+function demoDeleteItem(db,id,by){ const it=demoFindItem(db,id); if(!it) return {ok:false,error:'Item not found'}; it.archived=true; it.updatedAt=new Date().toISOString(); it.updatedBy=by||'Admin'; demoLog(db,by,'archived',id,it.title); return {ok:true,data:Object.assign({},it)}; }
+function demoRestoreItem(db,id,by){ const it=demoFindItem(db,id); if(!it) return {ok:false,error:'Item not found'}; it.archived=false; it.updatedAt=new Date().toISOString(); it.updatedBy=by||'Admin'; demoLog(db,by,'restored',id,it.title); return {ok:true,data:Object.assign({},it)}; }
+function demoUpsertMember(db, member, by){
+  const name = String(member.name||'').slice(0,100); if(!name) return {ok:false,error:'Name required'};
+  let m = db.members.find(x=>x.name===name);
+  const fields = { role:String(member.role||'').slice(0,100), workstream:String(member.workstream||'').slice(0,150), active: member.active!==false };
+  if(m) Object.assign(m,fields); else db.members.push(Object.assign({name},fields));
+  demoLog(db,by,'member saved',name,'');
+  return {ok:true, data:Object.assign({name},fields)};
+}
+function demoRemoveMember(db,name,by){ const i=db.members.findIndex(m=>m.name===name); if(i<0) return {ok:false,error:'Member not found'}; db.members.splice(i,1); demoLog(db,by,'member removed',name,''); return {ok:true}; }
+function demoUpsertLink(db, link, by){
+  const id = String(link.id||'').trim() || ('lnk'+Math.random().toString(16).slice(2,10));
+  const url = String(link.url||'').trim();
+  if(url && !/^https?:\/\//i.test(url)) return {ok:false,error:'Links must use http or https'};
+  let l = db.links.find(x=>x.id===id);
+  const fields = { label:String(link.label||'').slice(0,200), url:url.slice(0,500), sort: Number(link.sort)||999 };
+  if(l) Object.assign(l,fields); else db.links.push(Object.assign({id},fields));
+  demoLog(db,by,'link saved',id,fields.label);
+  return {ok:true, data:Object.assign({id},fields)};
+}
+function demoRemoveLink(db,id,by){ const i=db.links.findIndex(l=>l.id===id); if(i<0) return {ok:false,error:'Link not found'}; db.links.splice(i,1); demoLog(db,by,'link removed',id,''); return {ok:true}; }
+function demoSetMeta(db,key,value,by){
+  if(META_WHITELIST.indexOf(key)===-1) return {ok:false,error:'That field cannot be edited here'};
+  const isGate = key.indexOf('gate_')===0;
+  db.meta[key] = isGate ? !!value : String(value||'').slice(0,500);
+  demoLog(db,by,'meta updated',key,'');
+  return {ok:true, data:{key,value:db.meta[key]}};
+}
+function demoResetChecks(db,list,confirm,by){
+  if(confirm!=='RESET') return {ok:false,error:'Type RESET to confirm'};
+  let changed=0;
+  db.items.filter(i=>i.list===list && i.done).forEach(i=>{ i.done=false; i.doneBy=''; i.doneAt=''; i.updatedAt=new Date().toISOString(); i.updatedBy=by||'Admin'; changed++; });
+  demoLog(db,by,'reset checks',list,changed+' item(s)');
+  return {ok:true, data:{changed}};
+}
+
+function demoGetAll(){
+  const db = demoLoadDb();
+  return { ok:true, data:{
+    meta: db.meta, categories: db.categories.slice().sort((a,b)=>a.sort-b.sort),
+    members: db.members, links: db.links.slice().sort((a,b)=>a.sort-b.sort),
+    items: db.items.slice(),
+    log: db.log.slice(-30).slice().reverse(),
+    serverTime: new Date().toISOString()
+  }};
+}
+function demoCall(action, body){
+  const db = demoLoadDb();
+  let res;
+  switch(action){
+    case 'verifyCode': res = {ok:true, data:{valid:true}}; break;
+    case 'setDone': res = demoApplySetDone(db, body.id, body.done, body.by); break;
+    case 'setNote': res = demoApplySetNote(db, body.id, body.note, body.by); break;
+    case 'batch': {
+      const results=[];
+      (body.ops||[]).forEach(op=>{
+        if(op.action==='setDone') results.push(demoApplySetDone(db, op.id, op.done, body.by));
+        else if(op.action==='setNote') results.push(demoApplySetNote(db, op.id, op.note, body.by));
+      });
+      res = {ok:true, data: results.filter(r=>r.ok).map(r=>r.data)};
+      break;
+    }
+    case 'addItem': res = demoAddItem(db, body.item, body.by||'Admin'); break;
+    case 'updateItem': res = demoUpdateItem(db, body.id, body.fields||{}, 'Admin'); break;
+    case 'deleteItem': res = demoDeleteItem(db, body.id, 'Admin'); break;
+    case 'restoreItem': res = demoRestoreItem(db, body.id, 'Admin'); break;
+    case 'upsertMember': res = demoUpsertMember(db, body.member||{}, 'Admin'); break;
+    case 'removeMember': res = demoRemoveMember(db, body.name, 'Admin'); break;
+    case 'upsertLink': res = demoUpsertLink(db, body.link||{}, 'Admin'); break;
+    case 'removeLink': res = demoRemoveLink(db, body.id, 'Admin'); break;
+    case 'setMeta': res = demoSetMeta(db, body.key, body.value, 'Admin'); break;
+    case 'resetChecks': res = demoResetChecks(db, body.list, body.confirm, 'Admin'); break;
+    default: res = {ok:false, error:'unknown action'};
+  }
+  demoSaveDb(db);
+  return res;
+}
+
+/* ---------------- API layer ---------------- */
+async function apiGetAll(){
+  if(!LIVE) return demoGetAll();
+  const r = await fetch(API_URL+'?action=getAll');
+  return r.json();
+}
+async function callAction(action, payload){
+  const body = Object.assign({action}, payload);
+  if(ADMIN_ACTIONS.indexOf(action)>=0) body.pass = localStorage.getItem('afg_admin_pass')||'';
+  else if(action!=='verifyCode') body.code = identity.code;
+  if(!LIVE) return demoCall(action, body);
+  const r = await fetch(API_URL, { method:'POST', headers:{'Content-Type':'text/plain;charset=utf-8'}, body:JSON.stringify(body) });
+  return r.json();
+}
+
+/* ---------------- sync engine ---------------- */
+function setSyncStatus(state, label){
+  const el = document.getElementById('syncpill');
+  el.className = 'syncpill '+state;
+  const map = { loading:'Loading…', saving:'Saving…', saved:'Saved · '+new Date().toLocaleTimeString(undefined,{hour:'numeric',minute:'2-digit'}), offline:'Offline, will retry', demo:'DEMO' };
+  el.textContent = label || map[state] || '';
+}
+
+function scheduleFlush(){
+  setSyncStatus('saving');
+  clearTimeout(flushTimer);
+  flushTimer = setTimeout(flushQueue, 400);
+}
+
+async function flushQueue(){
+  if(inFlight) return;
+  const ids = Object.keys(pending);
+  if(!ids.length){ if(!LIVE) setSyncStatus('demo'); else setSyncStatus('saved'); return; }
+  inFlight = true;
+  const snapshot = JSON.parse(JSON.stringify(pending));
+  const ops = [];
+  Object.keys(snapshot).forEach(id=>{
+    const e = snapshot[id];
+    if('done' in e) ops.push({action:'setDone', id, done:e.done});
+    if('note' in e) ops.push({action:'setNote', id, note:e.note});
+  });
+  try{
+    const res = await callAction('batch', { ops, by: identity.name });
+    inFlight = false;
+    if(res.ok){
+      Object.keys(snapshot).forEach(id=>{
+        if(JSON.stringify(pending[id])===JSON.stringify(snapshot[id])) delete pending[id];
+      });
+      persistPending();
+      retryIdx = 0;
+      await refreshAll();
+      if(Object.keys(pending).length) scheduleFlush();
+    } else {
+      setSyncStatus('offline', res.error||'Offline, will retry');
+      scheduleRetry();
+    }
+  } catch(err){
+    inFlight = false;
+    setSyncStatus('offline');
+    scheduleRetry();
+  }
+}
+function scheduleRetry(){
+  clearTimeout(retryTimer);
+  const delay = RETRY_DELAYS[Math.min(retryIdx, RETRY_DELAYS.length-1)] || 30000;
+  retryIdx++;
+  retryTimer = setTimeout(flushQueue, delay);
+}
+function sendBeacon(){
+  const ids = Object.keys(pending);
+  if(!ids.length || !LIVE || !navigator.sendBeacon) return;
+  const ops = [];
+  ids.forEach(id=>{
+    const e = pending[id];
+    if('done' in e) ops.push({action:'setDone', id, done:e.done});
+    if('note' in e) ops.push({action:'setNote', id, note:e.note});
+  });
+  const body = JSON.stringify({ action:'batch', ops, by:identity.name, code:identity.code });
+  navigator.sendBeacon(API_URL, new Blob([body], {type:'text/plain;charset=utf-8'}));
+}
+
+async function refreshAll(){
+  try{
+    const res = await apiGetAll();
+    if(!res.ok) { setSyncStatus('offline', res.error); return; }
+    const d = res.data;
+    STATE.meta = d.meta; STATE.categories = d.categories; STATE.members = d.members;
+    STATE.links = d.links; STATE.log = d.log;
+    // merge: server wins except items with a pending local op
+    const merged = d.items.map(item=>{
+      const p = pending[item.id];
+      if(!p) return item;
+      const copy = Object.assign({}, item);
+      if('done' in p) copy.done = p.done;
+      if('note' in p) copy.note = p.note;
+      return copy;
+    });
+    STATE.items = merged;
+    renderAll();
+    if(!Object.keys(pending).length) setSyncStatus(LIVE?'saved':'demo');
+  } catch(err){
+    setSyncStatus('offline');
+  }
+}
+
+let pollTimer = null;
+function startPolling(){
+  stopPolling();
+  pollTimer = setInterval(()=>{ if(document.visibilityState==='visible') refreshAll(); }, 20000);
+}
+function stopPolling(){ if(pollTimer) clearInterval(pollTimer); }
+
+document.addEventListener('visibilitychange', ()=>{
+  if(document.visibilityState==='visible') refreshAll();
+  else sendBeacon();
+});
+window.addEventListener('pagehide', sendBeacon);
+window.addEventListener('focus', refreshAll);
+
+/* ---------------- derived data ---------------- */
+function packetItems(){ return STATE.items.filter(i=>i.list==='packet' && !i.archived); }
+function milestoneItems(){ return STATE.items.filter(i=>i.list==='milestone' && !i.archived); }
+function catName(id){ const c=STATE.categories.find(c=>c.id===id); return c?c.name:id; }
+function catBlurb(id){ const c=STATE.categories.find(c=>c.id===id); return c?c.blurb:''; }
+
+/* ---------------- render: overview ---------------- */
+function renderOverview(){
+  const packet = packetItems(), milestones = milestoneItems();
+  const doneP = packet.filter(i=>i.done).length;
+  const pct = packet.length ? Math.round(doneP/packet.length*100) : 0;
+  document.getElementById('statPacket').innerHTML = doneP+' / '+packet.length+' <small>('+pct+'%)</small>';
+  document.getElementById('statP1').textContent = packet.filter(i=>i.priority===1 && !i.done).length;
+  const doneM = milestones.filter(i=>i.done).length;
+  document.getElementById('statMilestones').textContent = doneM+' / '+milestones.length;
+  const due = STATE.meta.finalDueDate;
+  let dueTxt = 'n/a';
+  if(due){
+    const days = Math.ceil((new Date(due+'T00:00:00') - new Date(new Date().toDateString()))/86400000);
+    dueTxt = isNaN(days) ? 'n/a' : String(days);
+  }
+  document.getElementById('statDue').textContent = dueTxt;
+
+  const kv = document.getElementById('briefKv');
+  kv.innerHTML = BRIEF_FIELDS.map(f=>'<div class="k">'+esc(f.label)+'</div><div class="v">'+esc(STATE.meta[f.key]||'')+'</div>').join('');
+
+  const gate = document.getElementById('gateRow');
+  gate.innerHTML = GATE_FIELDS.map(g=>{
+    const on = !!STATE.meta[g.key];
+    return '<div class="gateitem '+(on?'on':'off')+'"><span class="ic">'+(on?'✓':'○')+'</span>'+esc(g.label)+'</div>';
+  }).join('');
+}
+
+/* ---------------- render: source packet ---------------- */
+function renderPacketFilters(){
+  const wrap = document.getElementById('packetFilters');
+  const chips = [
+    {v:'all', l:'All'}, {v:'p1', l:'Priority 1'}, {v:'open', l:'Open'}, {v:'done', l:'Done'}, {v:'mine', l:'Mine'}
+  ];
+  const cats = STATE.categories;
+  wrap.innerHTML = chips.map(c=>'<button class="chip '+(packetFilter.status===c.v?'on':'')+'" data-status="'+c.v+'">'+c.l+'</button>').join('')
+    + '<select class="catselect" id="catFilterSel"><option value="all">All categories</option>'
+    + cats.map(c=>'<option value="'+esc(c.id)+'" '+(packetFilter.category===c.id?'selected':'')+'>'+esc(c.name)+'</option>').join('')
+    + '</select>';
+  wrap.querySelectorAll('.chip[data-status]').forEach(b=>b.addEventListener('click', ()=>{
+    packetFilter.status = b.dataset.status;
+    localStorage.setItem('afg_packet_filter', JSON.stringify(packetFilter));
+    renderPacketFilters(); renderPacket();
+  }));
+  document.getElementById('catFilterSel').addEventListener('change', e=>{
+    packetFilter.category = e.target.value;
+    localStorage.setItem('afg_packet_filter', JSON.stringify(packetFilter));
+    renderPacket();
+  });
+}
+
+function itemMatchesFilter(it){
+  if(packetFilter.category!=='all' && it.category!==packetFilter.category) return false;
+  if(packetFilter.status==='p1' && it.priority!==1) return false;
+  if(packetFilter.status==='open' && it.done) return false;
+  if(packetFilter.status==='done' && !it.done) return false;
+  if(packetFilter.status==='mine'){
+    const mine = identity.name && (it.owner===identity.name || it.doneBy===identity.name);
+    if(!mine) return false;
+  }
+  return true;
+}
+
+function renderItemRow(it){
+  const badge = it.priority ? '<span class="badge p'+it.priority+'">P'+it.priority+'</span>' : '';
+  const feeds = it.feeds ? '<span class="feeds">Feeds: '+esc(it.feeds)+'</span>' : '<span></span>';
+  const doneInfo = it.done ? '<span class="doneinfo">✓ '+esc(it.doneBy)+' · '+fmtDateTime(it.doneAt)+'</span>' : '';
+  const owner = it.owner ? '<span class="ownerchip">'+esc(it.owner)+'</span>' : '';
+  const dot = it.note ? '<span class="dot"></span>' : '';
+  return ''
+    + '<div class="row item'+(it.done?' done':'')+'" data-id="'+esc(it.id)+'">'
+    +   '<label class="check"><input type="checkbox" '+(it.done?'checked':'')+' data-check="'+esc(it.id)+'"/></label>'
+    +   '<div class="itemtop"><span class="iid">'+esc(it.id)+'</span><span class="ititle">'+esc(it.title)+'</span>'+badge+'</div>'
+    +   '<div class="itemmeta">'
+    +     '<div class="metaLeft">'+feeds+'<button class="notebtn" data-note="'+esc(it.id)+'" title="Note">💬'+dot+'</button></div>'
+    +     '<div class="metaRight">'+owner+doneInfo+'</div>'
+    +   '</div>'
+    + '</div>'
+    + '<div class="noteWrap" id="noteWrap-'+esc(it.id)+'" hidden><textarea class="noteInput" data-noteinput="'+esc(it.id)+'" maxlength="1000" placeholder="Add a note…">'+esc(it.note)+'</textarea></div>';
+}
+
+function renderPacket(){
+  const wrap = document.getElementById('packetGroups');
+  const filtered = packetItems().filter(itemMatchesFilter);
+  const byCat = {};
+  filtered.forEach(it=>{ (byCat[it.category] = byCat[it.category]||[]).push(it); });
+  const order = STATE.categories.map(c=>c.id);
+  let html = '';
+  order.forEach(catId=>{
+    const list = (byCat[catId]||[]).slice().sort((a,b)=>a.sort-b.sort);
+    if(!list.length) return;
+    const total = packetItems().filter(i=>i.category===catId && itemMatchesFilterCategoryOnly(i)).length;
+    const done = packetItems().filter(i=>i.category===catId && itemMatchesFilterCategoryOnly(i) && i.done).length;
+    const pct = total ? Math.round(done/total*100) : 0;
+    html += '<div class="catgroup">'
+      + '<div class="cathead"><span class="catname">'+esc(catName(catId))+'</span><span class="catblurb">'+esc(catBlurb(catId))+'</span><span class="catcount">'+done+' / '+total+'</span></div>'
+      + '<div class="bar"><span style="width:'+pct+'%"></span></div>'
+      + '<div class="rows">'+list.map(renderItemRow).join('')+'</div>'
+      + '</div>';
+  });
+  wrap.innerHTML = html || '<div class="card">No items match this filter.</div>';
+  wireItemRows();
+}
+function itemMatchesFilterCategoryOnly(it){
+  // used for group totals: respect status/mine filters but not the category dropdown, so counts reflect the group itself
+  if(packetFilter.status==='p1' && it.priority!==1) return false;
+  if(packetFilter.status==='open' && it.done) return false;
+  if(packetFilter.status==='done' && !it.done) return false;
+  if(packetFilter.status==='mine'){
+    const mine = identity.name && (it.owner===identity.name || it.doneBy===identity.name);
+    if(!mine) return false;
+  }
+  return true;
+}
+
+/* ---------------- render: milestones ---------------- */
+function renderMilestones(){
+  const wrap = document.getElementById('milestoneGroups');
+  const items = milestoneItems().slice().sort((a,b)=>a.sort-b.sort);
+  const byWeek = {};
+  items.forEach(it=>{ (byWeek[it.due]=byWeek[it.due]||[]).push(it); });
+  const weeks = Object.keys(byWeek).sort((a,b)=>Number(a)-Number(b));
+  wrap.innerHTML = weeks.map(w=>{
+    return '<div class="weekhead">Week '+esc(w)+'</div><div class="rows">'+byWeek[w].map(renderItemRow).join('')+'</div>';
+  }).join('');
+  wireItemRows();
+}
+
+function wireItemRows(){
+  document.querySelectorAll('[data-check]').forEach(cb=>{
+    cb.addEventListener('change', onCheckToggle);
+  });
+  document.querySelectorAll('[data-note]').forEach(btn=>{
+    btn.addEventListener('click', ()=>toggleNote(btn.dataset.note));
+  });
+  document.querySelectorAll('[data-noteinput]').forEach(ta=>{
+    ta.addEventListener('blur', ()=>saveNote(ta.dataset.noteinput, ta.value));
+  });
+}
+
+function onCheckToggle(e){
+  const id = e.target.dataset.check;
+  const done = e.target.checked;
+  if(needsIdentity()){
+    e.target.checked = !done;
+    pendingReplay = { id, done };
+    openIdentityPanel();
+    return;
+  }
+  applyLocalDone(id, done);
+}
+function applyLocalDone(id, done){
+  const it = STATE.items.find(i=>i.id===id);
+  if(it){ it.done = done; it.doneBy = done?identity.name:''; it.doneAt = done?new Date().toISOString():''; }
+  pending[id] = Object.assign({}, pending[id]||{}, {done});
+  persistPending();
+  renderAll();
+  const row = document.querySelector('.row.item[data-id="'+CSS.escape(id)+'"]');
+  if(row){ row.classList.add('pulse'); setTimeout(()=>row.classList.remove('pulse'), 650); }
+  scheduleFlush();
+}
+function toggleNote(id){
+  const wrap = document.getElementById('noteWrap-'+id);
+  if(!wrap) return;
+  const isOpen = !wrap.hidden;
+  document.querySelectorAll('.noteWrap').forEach(w=>w.hidden=true);
+  if(!isOpen){ wrap.hidden = false; const ta = wrap.querySelector('textarea'); ta.focus(); }
+}
+function saveNote(id, value){
+  const it = STATE.items.find(i=>i.id===id);
+  const prev = it ? it.note : '';
+  if(value===prev) return;
+  if(needsIdentity()){ openIdentityPanel(); return; }
+  if(it) it.note = value;
+  pending[id] = Object.assign({}, pending[id]||{}, {note:value});
+  persistPending();
+  renderAll();
+  scheduleFlush();
+}
+
+/* ---------------- render: team, kickoff, links, activity ---------------- */
+function renderTeam(){
+  const tbody = document.querySelector('#teamTable tbody');
+  tbody.innerHTML = STATE.members.filter(m=>m.active!==false).map(m=>
+    '<tr><td>'+esc(m.name)+'</td><td>'+esc(m.role)+'</td><td>'+esc(m.workstream)+'</td></tr>'
+  ).join('') || '<tr><td colspan="3">No members yet.</td></tr>';
+  document.getElementById('wsList').innerHTML = DEMO.teamWorkstreams.map(w=>
+    '<div class="wsrow"><span>'+esc(w.workstream)+'</span><span class="o">'+esc(w.owner)+'</span></div>'
+  ).join('');
+}
+function renderKickoff(){
+  document.getElementById('agendaList').innerHTML = DEMO.kickoffAgenda.blocks.map(b=>
+    '<div class="agendarow"><div class="t">'+esc(b.time)+'</div><div>'+esc(b.desc)+'</div></div>'
+  ).join('');
+  document.getElementById('outputsList').innerHTML = DEMO.kickoffAgenda.outputs.map(o=>'<li>'+esc(o)+'</li>').join('');
+}
+function renderLinks(){
+  document.getElementById('linkGrid').innerHTML = STATE.links.slice().sort((a,b)=>a.sort-b.sort).map(l=>{
+    const body = l.url ? '<a href="'+esc(l.url)+'" target="_blank" rel="noopener">'+esc(l.url)+'</a>' : '<span class="empty">Add link (admin)</span>';
+    return '<div class="linkcard"><div class="lbl">'+esc(l.label)+'</div>'+body+'</div>';
+  }).join('');
+}
+function renderActivity(){
+  document.getElementById('logList').innerHTML = STATE.log.slice(0,30).map(l=>
+    '<div class="logrow"><span><span class="who">'+esc(l.actor)+'</span> '+esc(l.action)+' '+esc(l.itemId)+'</span><span>'+timeAgo(l.ts)+'</span></div>'
+  ).join('') || '<div class="logrow"><span>No activity yet.</span></div>';
+}
+function renderFooter(){
+  document.getElementById('footer').innerHTML =
+    'Data lives in a Google Sheet via Apps Script. Status only, never upload AFG files here.<br>'
+    + 'Last sync: '+new Date().toLocaleTimeString(undefined,{hour:'numeric',minute:'2-digit'})+'. '
+    + (LIVE ? '' : '<a id="demoLink">Running in demo mode</a>, on built-in seed data.');
+}
+
+function renderAll(){
+  renderOverview();
+  renderPacketFilters();
+  renderPacket();
+  renderMilestones();
+  renderTeam();
+  renderKickoff();
+  renderLinks();
+  renderActivity();
+  renderFooter();
+  document.getElementById('btnWhoAmI').textContent = identity.name ? ("I'm "+identity.name) : 'Who are you?';
+}
+
+/* ---------------- identity panel ---------------- */
+function needsIdentity(){ return !identity.name || !identity.code; }
+function openIdentityPanel(){
+  const sel = document.getElementById('idName');
+  const active = STATE.members.filter(m=>m.active!==false).map(m=>m.name);
+  sel.innerHTML = active.map(n=>'<option value="'+esc(n)+'">'+esc(n)+'</option>').join('') + '<option value="__other__">Someone else</option>';
+  if(identity.name && active.indexOf(identity.name)>=0) sel.value = identity.name;
+  else if(identity.name){ sel.value='__other__'; }
+  document.getElementById('idOtherWrap').hidden = sel.value!=='__other__';
+  document.getElementById('idOther').value = (sel.value==='__other__') ? identity.name : '';
+  document.getElementById('idCode').value = identity.code || '';
+  document.getElementById('idMsg').innerHTML = '';
+  openOverlay('idOverlay');
+}
+document.getElementById('idName').addEventListener('change', e=>{
+  document.getElementById('idOtherWrap').hidden = e.target.value!=='__other__';
+});
+document.getElementById('idSave').addEventListener('click', async ()=>{
+  const sel = document.getElementById('idName');
+  const name = sel.value==='__other__' ? document.getElementById('idOther').value.trim() : sel.value;
+  const code = document.getElementById('idCode').value;
+  const msg = document.getElementById('idMsg');
+  if(!name){ msg.innerHTML = '<div class="msg err">Enter your name.</div>'; return; }
+  if(!code){ msg.innerHTML = '<div class="msg err">Enter the team code.</div>'; return; }
+  msg.innerHTML = '<div class="msg">Checking…</div>';
+  const res = await callAction('verifyCode', { code });
+  if(res.ok && res.data && res.data.valid){
+    identity = { name, code };
+    saveIdentity();
+    closeOverlay(document.getElementById('idOverlay'));
+    renderAll();
+    if(pendingReplay){ applyLocalDone(pendingReplay.id, pendingReplay.done); pendingReplay = null; }
+  } else {
+    msg.innerHTML = '<div class="msg err">'+esc((res.data&&!res.data.valid)?'Wrong team code.':(res.error||'Could not verify.'))+'</div>';
+  }
+});
+document.getElementById('btnWhoAmI').addEventListener('click', openIdentityPanel);
+
+/* ---------------- overlay plumbing ---------------- */
+function openOverlay(id){ document.getElementById(id).classList.add('show'); }
+function closeOverlay(el){ el.classList.remove('show'); }
+document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click', e=>closeOverlay(e.target.closest('.overlay'))));
+document.querySelectorAll('.overlay').forEach(o=>o.addEventListener('click', e=>{ if(e.target===o) closeOverlay(o); }));
+
+function closeAllPops(except){ document.querySelectorAll('.infopop.show').forEach(p=>{ if(p!==except) p.classList.remove('show'); }); }
+document.querySelectorAll('[data-pop]').forEach(btn=>{
+  btn.addEventListener('click', e=>{
+    e.stopPropagation();
+    const pop = document.getElementById(btn.dataset.pop);
+    const shown = pop.classList.contains('show');
+    closeAllPops();
+    if(!shown) pop.classList.add('show');
+  });
+});
+document.querySelectorAll('.infopop').forEach(p=>p.addEventListener('click', e=>e.stopPropagation()));
+document.addEventListener('click', ()=>closeAllPops());
+
+/* ---------------- sidenav ---------------- */
+const shellEl = document.getElementById('shell'), sidenavEl = document.getElementById('sidenav'),
+      collapseBtn = document.getElementById('collapseBtn'), navToggle = document.getElementById('navToggle'),
+      navBackdrop = document.getElementById('navBackdrop');
+function setCollapsed(v){
+  shellEl.classList.toggle('collapsed', v);
+  collapseBtn.textContent = v ? '»' : '«';
+  localStorage.setItem('afg_nav_collapsed', v ? '1' : '0');
+}
+setCollapsed(localStorage.getItem('afg_nav_collapsed')==='1');
+collapseBtn.addEventListener('click', ()=>setCollapsed(!shellEl.classList.contains('collapsed')));
+function openMobileNav(){ sidenavEl.classList.add('mobile-open'); navBackdrop.classList.add('show'); }
+function closeMobileNav(){ sidenavEl.classList.remove('mobile-open'); navBackdrop.classList.remove('show'); }
+navToggle.addEventListener('click', ()=>{ sidenavEl.classList.contains('mobile-open') ? closeMobileNav() : openMobileNav(); });
+navBackdrop.addEventListener('click', closeMobileNav);
+document.querySelectorAll('.navlink').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    const target = document.getElementById(btn.dataset.target);
+    if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
+    closeMobileNav();
+  });
+});
+
+/* ================= ADMIN PANEL ================= */
+document.getElementById('btnAdmin').addEventListener('click', ()=>{ buildAdmin(); openOverlay('adminOverlay'); });
+
+function adminMsg(html){ document.getElementById('aMsg').innerHTML = html; }
+async function adminCall(action, payload, okMsg){
+  adminMsg('<div class="msg">Saving…</div>');
+  const res = await callAction(action, payload);
+  if(res.ok){
+    adminMsg('<div class="msg ok">'+esc(okMsg||'Done.')+'</div>');
+    await refreshAll();
+    buildAdmin();
+  } else {
+    adminMsg('<div class="msg err">'+esc(res.error||'Something went wrong.')+'</div>');
+  }
+  return res;
+}
+
+function buildAdmin(){
+  const pass = localStorage.getItem('afg_admin_pass')||'';
+  document.getElementById('aPass').value = pass;
+  document.getElementById('aPass').oninput = e => localStorage.setItem('afg_admin_pass', e.target.value);
+
+  // 1. add item
+  document.getElementById('aiCat').innerHTML = STATE.categories.map(c=>'<option value="'+esc(c.id)+'">'+esc(c.name)+'</option>').join('');
+  document.getElementById('aiList').onchange = e=>{
+    const isMilestone = e.target.value==='milestone';
+    document.getElementById('aiCatWrap').hidden = isMilestone;
+    document.getElementById('aiPWrap').hidden = isMilestone;
+    document.getElementById('aiFeedsWrap').hidden = isMilestone;
+    document.getElementById('aiDueWrap').querySelector('label').textContent = isMilestone ? 'Week' : 'Due';
+  };
+  document.getElementById('aiSave').onclick = ()=>{
+    const list = document.getElementById('aiList').value;
+    adminCall('addItem', { item: {
+      list, category: document.getElementById('aiCat').value,
+      title: document.getElementById('aiTitle').value,
+      priority: document.getElementById('aiP').value,
+      owner: document.getElementById('aiOwner').value,
+      feeds: document.getElementById('aiFeeds').value,
+      due: document.getElementById('aiDue').value,
+      detail: document.getElementById('aiDetail').value
+    }}, 'Item added.');
+  };
+
+  // 2. edit or delete
+  const activeItems = STATE.items.filter(i=>!i.archived).slice().sort((a,b)=>a.id.localeCompare(b.id));
+  const aeSel = document.getElementById('aeSelect');
+  aeSel.innerHTML = '<option value="">Select an item…</option>' + activeItems.map(i=>'<option value="'+esc(i.id)+'">'+esc(i.id)+' · '+esc(i.title)+'</option>').join('');
+  aeSel.onchange = ()=>{
+    const it = STATE.items.find(i=>i.id===aeSel.value);
+    document.getElementById('aeFields').hidden = !it;
+    if(!it) return;
+    document.getElementById('aeTitle').value = it.title;
+    document.getElementById('aeOwner').value = it.owner;
+    document.getElementById('aeFeeds').value = it.feeds;
+    document.getElementById('aeDue').value = it.due;
+    document.getElementById('aeDetail').value = it.detail;
+    document.getElementById('aePWrap').hidden = it.list!=='packet';
+    document.getElementById('aeFeedsWrap').hidden = it.list!=='packet';
+    if(it.priority) document.getElementById('aeP').value = String(it.priority);
+  };
+  document.getElementById('aeSave').onclick = ()=>{
+    const it = STATE.items.find(i=>i.id===aeSel.value); if(!it) return;
+    const fields = { title: document.getElementById('aeTitle').value, owner: document.getElementById('aeOwner').value,
+      due: document.getElementById('aeDue').value, detail: document.getElementById('aeDetail').value };
+    if(it.list==='packet'){ fields.priority = document.getElementById('aeP').value; fields.feeds = document.getElementById('aeFeeds').value; }
+    adminCall('updateItem', { id: it.id, fields }, 'Item updated.');
+  };
+  document.getElementById('aeDelete').onclick = ()=>{
+    if(!aeSel.value) return;
+    if(confirm('Archive this item?')) adminCall('deleteItem', { id: aeSel.value }, 'Item archived.');
+  };
+
+  // 3. archived
+  const archived = STATE.items.filter(i=>i.archived);
+  document.getElementById('archList').innerHTML = archived.length ? archived.map(i=>
+    '<div class="miniRow"><div class="info"><div class="t1">'+esc(i.id)+' · '+esc(i.title)+'</div></div><button class="btn small" data-restore="'+esc(i.id)+'">Restore</button></div>'
+  ).join('') : '<div class="helptext">No archived items.</div>';
+  document.querySelectorAll('[data-restore]').forEach(b=>b.onclick = ()=>adminCall('restoreItem', { id:b.dataset.restore }, 'Item restored.'));
+
+  // 4. members
+  document.getElementById('amSave').onclick = ()=>{
+    const name = document.getElementById('amName').value.trim();
+    if(!name) return;
+    adminCall('upsertMember', { member: { name, role: document.getElementById('amRole').value, workstream: document.getElementById('amWorkstream').value, active:true } }, 'Member saved.');
+  };
+  document.getElementById('memberList').innerHTML = STATE.members.map(m=>
+    '<div class="miniRow"><div class="info"><div class="t1">'+esc(m.name)+'</div><div class="t2">'+esc(m.role)+' · '+esc(m.workstream)+'</div></div><button class="btn small danger" data-rmmember="'+esc(m.name)+'">Remove</button></div>'
+  ).join('');
+  document.querySelectorAll('[data-rmmember]').forEach(b=>b.onclick = ()=>{
+    if(confirm('Remove '+b.dataset.rmmember+'?')) adminCall('removeMember', { name:b.dataset.rmmember }, 'Member removed.');
+  });
+
+  // 5. links
+  document.getElementById('alSave').onclick = ()=>{
+    const label = document.getElementById('alLabel').value.trim();
+    if(!label) return;
+    adminCall('upsertLink', { link: { label, url: document.getElementById('alUrl').value } }, 'Link saved.');
+  };
+  document.getElementById('linkList').innerHTML = STATE.links.map(l=>
+    '<div class="miniRow"><div class="info"><div class="t1">'+esc(l.label)+'</div><div class="t2">'+esc(l.url||'no URL yet')+'</div></div><button class="btn small danger" data-rmlink="'+esc(l.id)+'">Remove</button></div>'
+  ).join('');
+  document.querySelectorAll('[data-rmlink]').forEach(b=>b.onclick = ()=>{
+    if(confirm('Remove this link?')) adminCall('removeLink', { id:b.dataset.rmlink }, 'Link removed.');
+  });
+
+  // 6. brief + gates
+  document.getElementById('briefFields').innerHTML = BRIEF_FIELDS.map(f=>
+    '<div class="field"><label>'+esc(f.label)+'</label><input type="text" data-brief="'+f.key+'" maxlength="500" value="'+esc(STATE.meta[f.key]||'')+'"/></div>'
+  ).join('');
+  document.getElementById('gateToggles').innerHTML = GATE_FIELDS.map(g=>
+    '<button type="button" class="chip '+(STATE.meta[g.key]?'on':'')+'" data-gate="'+g.key+'">'+esc(g.label)+'</button>'
+  ).join('');
+  document.querySelectorAll('[data-gate]').forEach(b=>b.onclick = ()=>b.classList.toggle('on'));
+  document.getElementById('briefSave').onclick = async ()=>{
+    for(const f of BRIEF_FIELDS){ await callAction('setMeta', { key:f.key, value: document.querySelector('[data-brief="'+f.key+'"]').value }); }
+    for(const g of GATE_FIELDS){ const on = document.querySelector('[data-gate="'+g.key+'"]').classList.contains('on'); await callAction('setMeta', { key:g.key, value:on }); }
+    adminMsg('<div class="msg ok">Brief saved.</div>');
+    await refreshAll(); buildAdmin();
+  };
+
+  // 7. final due date
+  document.getElementById('aDueDate').value = STATE.meta.finalDueDate || '';
+  document.getElementById('aDueSave').onclick = ()=>adminCall('setMeta', { key:'finalDueDate', value: document.getElementById('aDueDate').value }, 'Due date saved.');
+
+  // 8. reset checks
+  document.getElementById('arSave').onclick = ()=>{
+    const list = document.getElementById('arList').value;
+    const confirmTxt = document.getElementById('arConfirm').value;
+    adminCall('resetChecks', { list, confirm: confirmTxt }, 'Checks reset.');
+  };
+}
+
+/* ---------------- boot ---------------- */
+async function boot(){
+  setSyncStatus('loading');
+  await refreshAll();
+  if(LIVE) startPolling(); else setSyncStatus('demo');
+  renderAll();
+}
+boot();
+</script>
+</body>
+</html>
